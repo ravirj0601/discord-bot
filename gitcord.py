@@ -1,10 +1,5 @@
-
 import requests
-from config import GITHUB_REPO
 
-# url = f"https://api.github.com/repos/{GITHUB_REPO}/commits"
-
-# try:
 def fetch_gitinfo(git_username, git_repo_name):
     url = f"https://api.github.com/repos/{git_username}/{git_repo_name}/commits"
     try:
@@ -29,4 +24,3 @@ def fetch_gitinfo(git_username, git_repo_name):
         print(f" JSON decode error: {json_err}")
     except Exception as e:
         print(f"Unexpected error: {e}")   
-    # print(Commit_datails)
