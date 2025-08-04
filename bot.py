@@ -50,10 +50,21 @@ async def add(ctx, *args):
 @bot.command()
 async def gitfetch(ctx, git_username, git_repo_name):
     git_info = gitcord.fetch_gitinfo(git_username, git_repo_name)
-    username = git_info["user_name"]
-    repo = git_info["repository"]
-    commit_id = git_info["commit_id"]
-    last_commit_date = git_info["last_commit_date"]
+    if git_info:
+        username = git_info["commit"]["author"]["name"]
+        committer_name = git_info["commit"]["committer"]["name"]
+        commit_id = git_info["sha"][:7]
+        last_commit_date = git_info["commit"]["author"]["date"][:10]
+        response = (
+            f"Author: {username}\n"
+            f"Commiter Name: {committer_name}\n"
+            f"Repository: {git_repo_name}\n"
+            f"Commit ID: {commit_id}\n"
+            f"Last Commit Date: {last_commit_date}"
+        )
+    else:
+        response = "Could not fetch GitHub info."
+    
     await ctx.send(response)
 
 
