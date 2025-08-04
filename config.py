@@ -4,3 +4,4 @@ import os
 load_dotenv()
 
 BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+GITHUB_REPO = "ravirj0601/cpp"

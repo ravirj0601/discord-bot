@@ -18,6 +18,6 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         response_pkt = f"hello {message.author.display_name}!"
         await message.channel.send(response_pkt)
+        print(f"Packet sending: {response_pkt}")
 
 client.run(BOT_TOKEN)
-
