@@ -53,11 +53,13 @@ async def gitfetch(ctx, git_username, git_repo_name):
     if git_info:
         name = git_info["commit"]["author"]["name"]
         commit_id = git_info["sha"][:7]
+        commit_message = git_info["commit"]["message"]
         last_commit_date = git_info["commit"]["author"]["date"][:10]
         response = (
             f"Author: {name}\n"
             f"Repository: {git_repo_name}\n"
             f"Last commit ID: {commit_id}\n"
+            f"Last commit message: {commit_message}\n"
             f"Last commit date: {last_commit_date}\n"
             f"Link: https://github.com/{git_username}/{git_repo_name}/"
         )
